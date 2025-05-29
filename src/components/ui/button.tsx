@@ -21,11 +21,14 @@ const buttonVariants = cva(
         primary: "bg-(--color-primary-orange) text-white text-xs py-2 px-4 rounded-full w-[100px] hover:bg-(--color-primary-orange)/80 cursor-pointer",
         secondary:
           "bg-(--color-side-blue) text-white hover:bg-(--color-side-blue)/80 cursor-pointer rounded-full",
+        normal: "bg-(--color-side-blue) text-white hover:bg-(--color-side-blue)/80 cursor-pointer rounded-full",
+        lightGray: "bg-(--color-light-gray) text-side-blue hover:bg-(--color-light-gray)/80 cursor-pointer rounded-full"
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        normal: "px-16 py-3 text-sm font-normal",
         icon: "size-9",
       },
     },

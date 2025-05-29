@@ -49,6 +49,9 @@
   --color-primary-orange: #FE654F;
   --color-secondary-green: #CCF462;
   --color-light-gray:#F1F1F1;
+  --color-light-gray2: #F8F8F8;
+  --color-light-success: #ECF7F0;
+  --color-green-success:#44AF69;
 }
 
 :root {
@@ -133,4 +136,36 @@
   .e-h1 {
     @apply font-semibold text-[18px] sm:text-2xl text-[#181543];
   }
+  .e-formt {
+    @apply text-sm font-normal text-side-blue
+  }
+  .e-formd {
+     @apply text-xs font-light text-side-blue
+  }
+  .titptop h1 {
+    @apply text-8xl font-bold;
+  }
+  .tiptap {
+    @apply outline-0 
+  }
+  .Button-group button {
+    @apply bg-amber-300;
+  }
+  .prose a{
+    @apply underline text-blue-500 cursor-pointer;
+  }
+}
+
+.prose ul {
+  padding-left: 1.5rem;
+  list-style: initial;
+}
+
+.prose ol {
+  padding-left: 1.5rem;
+  list-style: decimal;
+}
+
+ul.group {
+  @apply list-none
 }

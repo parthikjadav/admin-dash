@@ -6,8 +6,6 @@ import connectDB from "@/lib/mongoose";
 import User from "@/models/user";
 import { signInFormSchemaType, signUpFormSchemaType } from "@/validation";
 import { cookies } from "next/headers";
-import { unstable_cache } from 'next/cache';
-import assert from "node:assert";
 
 export async function signIn(data: signInFormSchemaType) {
     try {
@@ -65,10 +63,10 @@ export async function getUser() {
     try {
         await connectDB()
         const token = (await cookies()).get("token")
-        assert(token, "token not provided")
+        if(!token) return null
 
         let data: any = decrypt(token.value)
-        assert(data, "Invalid token")
+        if(!data) return null
 
         let user = await User.findById(data.userId).select("-password")
         user = JSON.parse(JSON.stringify(user))

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import "./style.css"
 import { Toaster } from "sonner";
 import UserProvider from "@/providers/user";
+import Responsive from "@/components/responsive";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +29,7 @@ export default function RootLayout({
         <UserProvider />
         {children}
         <Toaster />
+        <Responsive/>
       </body>
     </html>
   );
