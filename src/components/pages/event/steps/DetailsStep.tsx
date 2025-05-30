@@ -66,14 +66,14 @@ const DetailsStep = () => {
         const saved = await createEvent(data, eventID)
         if (!saved) {
             toast("Error creating event")
+            return
         }
         if (currentStep) {
             setCurrentStep(currentStep + 1)
             setCanContinue(false)
+            setForm(data)
+            setEventID(saved)
         }
-        setForm(data)
-
-        setEventID(saved)
     }
 
     return (
@@ -84,7 +84,7 @@ const DetailsStep = () => {
                         <div className="event-heading">
                             <h3 className='font-semibold text-lg tracking-wide text-side-blue'> Event Details </h3>
                         </div>
-                        <div className='md:flex gap-4 items-start justify-between'>
+                        <div className='md:flex space-y-5 gap-4 items-start justify-between'>
                             <FormField
                                 control={form.control}
                                 name="title"
@@ -216,7 +216,7 @@ const DetailsStep = () => {
                             />
                         </div>
                         <div className="flex w-full justify-end">
-                            <Button variant={"normal"} className='' type='submit' size={"normal"} disabled={isError || !canContinue}>Next</Button>
+                            <Button variant={"normal"} className='w-full sm:w-auto' type='submit' size={"normal"} disabled={isError || !canContinue}>Next</Button>
                         </div>
                     </form>
                 </Form>

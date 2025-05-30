@@ -11,7 +11,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import Image from 'next/image'
 import { X } from 'lucide-react'
 import SidebarLinks from '../sidebar/SidebarLinks'
@@ -38,9 +38,9 @@ const MenuDrawer = () => {
                                 <X strokeWidth={1} size={24} />
                             </div>
                         </DrawerClose>
-                        <SidebarLinks item={sidebarLinks[0]} className='mt-4' isMobileLink={true}/>
+                        <SidebarLinks item={sidebarLinks[0]} className='mt-4' isMobileLink={true} />
                         <Separator className='bg-side-stroke h-[1px]' />
-                        <SidebarLinks item={sidebarLinks[1]} className='mt-5' isMobileLink={true}/>
+                        <SidebarLinks item={sidebarLinks[1]} className='mt-5' isMobileLink={true} />
                     </DrawerHeader>
                 </DrawerContent>
             </Drawer>

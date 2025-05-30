@@ -1,10 +1,9 @@
-import { MultiSelectCombobox } from '@/components/Multiselect'
 import NewEventHeader from '@/components/pages/event/NewEventHeader'
 import Stepper from '@/components/pages/event/Stepper'
 import DetailsStep from '@/components/pages/event/steps/DetailsStep'
-import TextEditor from '@/components/pages/event/Editor/TextEditor'
 import { Step } from '@/types'
 import React from 'react'
+import AddressStep from '@/components/pages/event/steps/AddressStep'
 
 const page = () => {
 
@@ -17,7 +16,7 @@ const page = () => {
         {
             label: "Location",
             description: "Add the location of your event",
-            content: <div>Event location</div>
+            content: <AddressStep/>
         },
         {
             label: "Date & Time",

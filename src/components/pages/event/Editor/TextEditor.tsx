@@ -30,7 +30,7 @@ import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
 import Underline from '@tiptap/extension-underline'
 
-import { textEditorLinks } from '@/constants'
+import { fontFamilies, fontSizes, textEditorLinks } from '@/constants'
 import { cn } from '@/lib/utils'
 import { AlignCenter, AlignLeft, AlignRight, Redo2, Square, Undo2 } from 'lucide-react'
 import { FontFamily } from './FontFamily'
@@ -85,13 +85,14 @@ const MenuBar = ({ editor }: { editor: any }) => {
 
   return <>
     <div>
-      <div className="top-menu flex gap-4 p-2">
+      <div className="top-menu flex gap-4 p-2 ">
         {
           textEditorLinks.map((link, ind) => {
             return <span key={ind} className='e-formt text-[12px]'>{link}</span>
           })
         }
       </div>
+      <Separator className='absolute left-0 mt-1 sm:hidden' />
       <div className="menu-bar flex flex-wrap justify-between items-center py-2 text-gray-500 ">
         <div className='flex items-center'>
           <div onClick={() => editor.chain().focus().undo().run()}
@@ -111,12 +112,11 @@ const MenuBar = ({ editor }: { editor: any }) => {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Font's</SelectLabel>
-                <SelectItem value="Inter">Inter</SelectItem>
-                <SelectItem value="Arial">Arial</SelectItem>
-                <SelectItem value="Georgia">Georgia</SelectItem>
-                <SelectItem value="'Fira Code'">Fira</SelectItem>
-                <SelectItem value="Helvetica">Helvetica</SelectItem>
-                <SelectItem value="poppins">poppins</SelectItem>
+                {
+                  fontFamilies.map((font,i) => (
+                    <SelectItem key={i} value={font.value}>{font.label}</SelectItem>
+                  ))
+                }
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -127,16 +127,11 @@ const MenuBar = ({ editor }: { editor: any }) => {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Font size</SelectLabel>
-                <SelectItem value="12px">12px</SelectItem>
-                <SelectItem value="14px">14px</SelectItem>
-                <SelectItem value="16px">16px</SelectItem>
-                <SelectItem value="18px">18px</SelectItem>
-                <SelectItem value="20px">20px</SelectItem>
-                <SelectItem value="22px">22px</SelectItem>
-                <SelectItem value="24px">24px</SelectItem>
-                <SelectItem value="26px">26px</SelectItem>
-                <SelectItem value="28px">28px</SelectItem>
-                <SelectItem value="30px">30px</SelectItem>
+                {
+                  fontSizes.map((size,i) => (
+                    <SelectItem key={i} value={size}>{size}</SelectItem>
+                  ))
+                }
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -318,10 +313,10 @@ const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
   }, [editor])
 
   return (
-    <div className="prose relative max-w-full pb-20 min-h-[400px] max-h-[600px] overflow-y-hidden overflow-x-hidden border border-gray-300 p-4 rounded-md">
+    <div className="prose relative max-w-full pb-20 min-h-[400px] max-h-[600px] overflow-y-hidden overflow-x-hidden border border-gray-300 p-2 sm:p-4 rounded-md">
       <MenuBar editor={editor} />
       <Separator className='mb-4' />
-      <div className='max-h-[300px] overflow-y-auto'>
+      <div className='max-h-[1000px] min-h-[200px] sm:max-h-[300px] overflow-y-auto'>
         <EditorContent editor={editor} />
       </div>
       <SocialMediaLink editor={editor} />

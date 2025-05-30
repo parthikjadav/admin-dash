@@ -30,7 +30,7 @@ export function MultiSelectCombobox({ items, value, onChange }: MultiSelectCombo
   const checkLength = (values: string[]) => {
      if(values.length === 0) return "Select"
      if(values.length > 2) {
-      return values.slice(0, 1).join(", ") + " + " + (values.length - 2) + " more" 
+      return values.slice(0, 1).join(", ") + " + " + (values.length - 1) + " more" 
      }else {
       return values.join(", ")
      }

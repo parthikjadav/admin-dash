@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import { Separator } from '../ui/separator'
+import { Separator } from '../../ui/separator'
 import { ChevronUp } from 'lucide-react'
 import Image from 'next/image'
 import MenuDrawer from './MenuDrawer'
