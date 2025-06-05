@@ -1,5 +1,22 @@
 import { sidebarLinksType } from "@/types";
 
+export const time = [
+  "12:00",
+  "12:30",
+  "1:00",
+  "1:30",
+  "2:00",
+  "2:30",
+  "3:00",
+  "3:30",
+  "4:00",
+  "4:30",
+  "5:00",
+  "5:30",
+  "6:00",
+  "6:30",
+]
+
 export const sidebarLinks: sidebarLinksType[] = [
     {
         title: "Events",
@@ -181,3 +198,71 @@ export const fontSizes = [
     "28px",
     "30px"
 ]
+
+export const timezones = [
+  { label: "UTC", value: "UTC" },
+  { label: "Pacific Time (US & Canada)", value: "America/Los_Angeles" },
+  { label: "Mountain Time (US & Canada)", value: "America/Denver" },
+  { label: "Central Time (US & Canada)", value: "America/Chicago" },
+  { label: "Eastern Time (US & Canada)", value: "America/New_York" },
+  { label: "Atlantic Time (Canada)", value: "America/Halifax" },
+  { label: "Newfoundland Time (Canada)", value: "America/St_Johns" },
+  { label: "Hawaii Time (US)", value: "Pacific/Honolulu" },
+  { label: "Alaska Time (US)", value: "America/Anchorage" },
+  { label: "Greenwich Mean Time", value: "Europe/London" },
+  { label: "Central European Time", value: "Europe/Paris" },
+  { label: "Eastern European Time", value: "Europe/Athens" },
+  { label: "Moscow Time", value: "Europe/Moscow" },
+  { label: "India Standard Time", value: "Asia/Kolkata" },
+  { label: "China Standard Time", value: "Asia/Shanghai" },
+  { label: "Japan Standard Time", value: "Asia/Tokyo" },
+  { label: "Australian Eastern Time", value: "Australia/Sydney" },
+  { label: "Australian Central Time", value: "Australia/Adelaide" },
+  { label: "Australian Western Time", value: "Australia/Perth" },
+  { label: "New Zealand Time", value: "Pacific/Auckland" },
+  { label: "Brasília Time", value: "America/Sao_Paulo" },
+  { label: "Argentina Time", value: "America/Argentina/Buenos_Aires" },
+  { label: "South Africa Standard Time", value: "Africa/Johannesburg" },
+  { label: "West Africa Time", value: "Africa/Lagos" },
+  { label: "East Africa Time", value: "Africa/Nairobi" },
+  { label: "Dubai Time", value: "Asia/Dubai" },
+  { label: "Singapore Time", value: "Asia/Singapore" },
+  { label: "Hong Kong Time", value: "Asia/Hong_Kong" },
+  { label: "Seoul Time", value: "Asia/Seoul" },
+  { label: "Bangkok Time", value: "Asia/Bangkok" },
+];
+
+export const EVENT_TYPES = {
+  SINGLE:"single", 
+  MULTIPLE:"multiple"
+}
+
+export const COUNTDOWN_TIME = {
+  ENABLED: "enabled",
+  DISABLED: "disabled"
+}
+
+export const PRICING_TYPE = {
+  PAID: "paid",
+  FREE: "free"
+}
+
+export const CANCELLATION_CHARGE_TYPE = {
+  PERCENTAGE: "percentage",
+  FIXED: "fixed"
+}
+
+export const EARLY_REGISTRATION_DISCOUNT_TYPE = {
+  PERCENTAGE: "percentage",
+  FIXED: "fixed"
+}
+
+export const REGISTRATION_TYPE = {
+  ONLINE: "online",
+  OFFLINE: "offline"
+}
+
+export const CAPACITY_TYPE = {
+  UNLIMITED: "unlimited",
+  LIMITED: "limited"
+}

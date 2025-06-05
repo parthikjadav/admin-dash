@@ -4,7 +4,7 @@ import { create } from "zustand";
 
 export interface AddressState {
   address: AddressFormSchemaType | null,
-  setAddress: (address: AddressFormSchemaType) => void
+  setAddress: (address: AddressFormSchemaType | null) => void
 }
 
 const useAddressStore = create<AddressState>()(persist((set)=> ({

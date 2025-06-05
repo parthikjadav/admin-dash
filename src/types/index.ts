@@ -39,3 +39,4 @@ export interface StepStoreType {
     setIsError: (bool: boolean) => void;
     setCanContinue: (bool: boolean) => void;
 }
+

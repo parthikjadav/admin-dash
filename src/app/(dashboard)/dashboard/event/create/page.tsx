@@ -4,6 +4,8 @@ import DetailsStep from '@/components/pages/event/steps/DetailsStep'
 import { Step } from '@/types'
 import React from 'react'
 import AddressStep from '@/components/pages/event/steps/AddressStep'
+import DateStep from '@/components/pages/event/steps/DateStep'
+import PricingStep from '@/components/pages/event/steps/PricingStep'
 
 const page = () => {
 
@@ -21,12 +23,12 @@ const page = () => {
         {
             label: "Date & Time",
             description: "Add the date of your event",
-            content: <div>Event date</div>
+            content: <DateStep/>
         },
         {
             label: "Ticket & Pricing",
             description: "Add the ticket and pricing of your event",
-            content: <div>Event ticket</div>
+            content: <PricingStep/>
         },
         {
             label: "Images",

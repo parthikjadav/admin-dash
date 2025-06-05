@@ -24,7 +24,7 @@ interface ComboboxDemoProps {
     label: string
 }
 
-export function CustomComboBox({ values, defaultValue, label, onChange }: { values: ComboboxDemoProps[], defaultValue: string, label: string, onChange: (value: string) => void }) {
+export function CustomComboBox({ values, defaultValue, label, onChange, width = "full" }: { values: ComboboxDemoProps[], defaultValue: string, label: string, onChange: (value: string) => void, width?: string }) {
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState(defaultValue)
 
@@ -47,7 +47,7 @@ export function CustomComboBox({ values, defaultValue, label, onChange }: { valu
                     <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[200px] p-0">
+            <PopoverContent className={cn("w-[200px] p-0",width)}>
                 <Command>
                     <CommandInput placeholder={`Search ${label}...`} />
                     <CommandList>

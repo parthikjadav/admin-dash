@@ -11,7 +11,6 @@ export async function signIn(data: signInFormSchemaType) {
     try {
         const response = await api.post('/auth/sign-in', data);
         const token = response.data.token;
-        console.log(response, "res");
 
         if (!token) return false;
         (await cookies()).set('token', token, {

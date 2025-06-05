@@ -44,14 +44,14 @@
 
   /* custom colors */
   --color-side-blue: #191644;
-  --color-side-gray:#676767;
-  --color-side-stroke: #DCDCDC;
-  --color-primary-orange: #FE654F;
-  --color-secondary-green: #CCF462;
-  --color-light-gray:#F1F1F1;
-  --color-light-gray2: #F8F8F8;
-  --color-light-success: #ECF7F0;
-  --color-green-success:#44AF69;
+  --color-side-gray: #676767;
+  --color-side-stroke: #dcdcdc;
+  --color-primary-orange: #fe654f;
+  --color-secondary-green: #ccf462;
+  --color-light-gray: #f1f1f1;
+  --color-light-gray2: #f8f8f8;
+  --color-light-success: #ecf7f0;
+  --color-green-success: #44af69;
 }
 
 :root {
@@ -137,22 +137,37 @@
     @apply font-semibold text-[18px] sm:text-2xl text-[#181543];
   }
   .e-formt {
-    @apply text-sm font-normal text-side-blue
+    @apply text-sm font-normal text-side-blue;
   }
   .e-formd {
-     @apply text-xs font-light text-side-blue
+    @apply text-xs font-light text-side-blue;
   }
   .titptop h1 {
     @apply text-8xl font-bold;
   }
   .tiptap {
-    @apply outline-0 
+    @apply outline-0;
   }
   .Button-group button {
     @apply bg-amber-300;
   }
-  .prose a{
+  .prose a {
     @apply underline text-blue-500 cursor-pointer;
+  }
+  .flex-c {
+    @apply flex items-center;
+  }
+  .eh3 {
+    @apply font-semibold text-lg tracking-wide text-side-blue;
+  }
+  .e-desc {
+    @apply text-sm font-light;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 
@@ -167,5 +182,14 @@
 }
 
 ul.group {
-  @apply list-none
+  @apply list-none;
+}
+
+.custom-dashed-border {
+  border-image: repeating-linear-gradient(
+      to right,
+      #dcd9d9 0 5px,
+      /* Dash: 10px */ transparent 2px 10px /* Gap: 10px */
+    )
+    30;
 }

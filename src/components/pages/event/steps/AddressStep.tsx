@@ -10,28 +10,44 @@ import { countries, indianCities, indianStates } from '@/constants'
 import useAddressStore from '@/store/address'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Asterisk } from 'lucide-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Label } from "@/components/ui/label"
 import { AddressRadioGroupItem, RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { z } from 'zod'
 import BackButton from '../BackButton'
+import { addAddress, getSavedAddresses } from '@/actions/event'
+import useEventFormStore from '@/store/eventForm'
+import useStepsStore from '@/store/stepper'
 
-const AddressFormSchema = z.object({
+export const AddressFormSchema = z.object({
     address: z.string().min(3, { message: 'Address should be at least 3 characters' }).max(100, { message: 'Address can not be more than 100 characters' }),
     city: z.string().min(1, { message: 'City is required' }),
     state: z.string().min(1, { message: 'State is required' }),
     zip: z.string().min(4, { message: 'Zip need to be greater then 4 digits' }).max(10, { message: 'Zip can not be more than 10 digits' }).regex(/^\d+$/, { message: 'Zip must contain only numbers' }),
     country: z.string().min(1, { message: 'Country is required' }),
-    save: z.boolean().default(false).optional(),
+    saveAddress: z.boolean().default(false).optional(),
 })
 
 export type AddressFormSchemaType = z.infer<typeof AddressFormSchema>
 
 const AddressStep = () => {
 
+    const [savedAddress, setSavedAddress] = useState([])
+    const fetchAddresses = async () => {
+        const res = await getSavedAddresses()
+        if(res){
+            setSavedAddress(res.addresses)
+        }   
+    }
+    useEffect(()=>{
+        fetchAddresses()
+    },[])
+
     const addedAddress = useAddressStore((state) => state.address)
+    const eventID = useEventFormStore((state) => state.eventID)
+    const currentStep = useStepsStore((state) => state.stepCount)
     const setAddress = useAddressStore((state) => state.setAddress)
+    const setCurrentStep = useStepsStore((state) => state.setStepCount)
 
     const form = useForm<AddressFormSchemaType>({
         resolver: zodResolver(AddressFormSchema),
@@ -41,43 +57,29 @@ const AddressStep = () => {
             state: '',
             zip: '',
             country: '',
-            save: false,
+            saveAddress: false,
         }
     })
 
-    const savedAddress = [
-        {
-            address: "Frisbie Park, Muskogee Avenue, Des Moines, IA, USA, Des Moines, IA, first",
-            city: "mumbai",
-            state: "assam",
-            zip: "50309",
-            country: "canada",
-            save: true,
-        },
-        {
-            address: "Frisbie Park, Muskogee Avenue, Des Moines, IA, USA, Des Moines, IA, second",
-            city: "delhi",
-            state: "kerala",
-            zip: "909025",
-            country: "italy",
-            save: true,
-        }
-    ]
-
     const handleSelectedAddress = (addressIndex: string) => {
-        const {address, city, state, zip, country, save} = savedAddress[parseInt(addressIndex)]
-        console.log(address, city, state, zip, country, save,"address");
+        const {address, city, state, zip, country, saveAddress} = savedAddress[parseInt(addressIndex)]
         form.setValue("address", address)
         form.setValue("city", city)
         form.setValue("state", state)
         form.setValue("zip", zip)
         form.setValue("country", country)
-        form.setValue("save", save)
+        form.setValue("saveAddress", saveAddress)
     }
 
-    const onSubmit = (data: AddressFormSchemaType) => {
+    const onSubmit = async (data: AddressFormSchemaType) => {
         console.log(data)   
-        setAddress(data)
+        if(!eventID) return
+        const response: any = await addAddress(data, eventID)
+
+        if(response && currentStep) {
+            setAddress(response)
+            setCurrentStep(currentStep + 1)
+        }
     }
     return (
         <>
@@ -166,7 +168,7 @@ const AddressStep = () => {
                         <div>
                             <FormField
                                 control={form.control}
-                                name="save"
+                                name="saveAddress"
                                 render={({ field }) => (
                                     <FormItem className="">
                                         <FormControl>

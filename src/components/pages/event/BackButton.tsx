@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from '@/components/ui/button'
 import useStepsStore from '@/store/stepper'
 import React from 'react'
@@ -17,7 +19,7 @@ const BackButton = () => {
 
     return (
         <>
-            <Button variant={"lightGray"} size={"normal"} onClick={handleBackStep} className={`${currentStep === 1 ? 'hidden' : ''}`}>Back</Button>
+            <Button variant={"lightGray"} size={"normal"} onClick={handleBackStep} className={`${currentStep === 1 ? 'hidden' : ''} w-full sm:w-auto mb-4 sm:mb-0`}>Back</Button>
         </>
     )
 }

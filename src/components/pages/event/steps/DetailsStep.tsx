@@ -69,10 +69,9 @@ const DetailsStep = () => {
             return
         }
         if (currentStep) {
-            setCurrentStep(currentStep + 1)
-            setCanContinue(false)
             setForm(data)
             setEventID(saved)
+            setCurrentStep(currentStep + 1)
         }
     }
 
@@ -216,7 +215,7 @@ const DetailsStep = () => {
                             />
                         </div>
                         <div className="flex w-full justify-end">
-                            <Button variant={"normal"} className='w-full sm:w-auto' type='submit' size={"normal"} disabled={isError || !canContinue}>Next</Button>
+                            <Button variant={"normal"} className='w-full sm:w-auto' type='submit' size={"normal"}>Next</Button>
                         </div>
                     </form>
                 </Form>

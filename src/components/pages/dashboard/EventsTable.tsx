@@ -75,6 +75,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import useEventFormStore from "@/store/eventForm";
 import useStepsStore from "@/store/stepper";
+import useAddressStore from "@/store/address";
+import useTimingStore from "@/store/timing";
 
 
 const data: Payment[] = [
@@ -292,7 +294,9 @@ export function EventsTable() {
   const [rowSelection, setRowSelection] = React.useState({});
   const setForm = useEventFormStore((state) => state.setForm)
   const setEventID = useEventFormStore((state) => state.setEventID)
+  const setAddress = useAddressStore((state) => state.setAddress)
   const setCurrentStep = useStepsStore((state) => state.setStepCount)
+  const setTiming = useTimingStore((state) => state.setTiming)
   const table = useReactTable({
     data,
     columns,
@@ -324,6 +328,8 @@ export function EventsTable() {
       amenities: '',
       parkingFacilities: ''
     })
+    setAddress(null)
+    setTiming(null)
   }
     
   return (

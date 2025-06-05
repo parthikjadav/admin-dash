@@ -9,18 +9,18 @@ import React from 'react'
 
 const Stepper = ({ steps }: { steps: Step[] }) => {
   // const [currentStep, setCurrentStep] = React.useState(1)
-  const currentStep = useStepsStore((state) => state.stepCount)
+  const currentStep = useStepsStore((state) => state.stepCount) || 1
   const canContinue = useStepsStore((state) => state.canContinue)
   const isError = useStepsStore((state) => state.isError)
 
   const setCurrentStep = useStepsStore((state) => state.setStepCount)
   const setCanContinue = useStepsStore((state) => state.setCanContinue)
 
-  if (!currentStep) {
-    return (<div className='py-25 mx-auto'>
-      <LoaderCircleIcon className='mx-auto animate-spin' />
-    </div>)
-  }
+  // if (!currentStep) {
+  //   return (<div className='py-25 mx-auto'>
+  //     <LoaderCircleIcon className='mx-auto animate-spin' />
+  //   </div>)
+  // }
 
   const handleNextStep = () => {
     if (currentStep < steps.length) {
